@@ -1,0 +1,39 @@
+###
+GET  http://localhost:9003/api/resources/lugares http/1.1
+
+
+###
+POST  http://localhost:9003/api/resources/lugar/add http/1.1
+Content-Type: application/json
+
+{
+    "pais":"colomabia",
+    "departamento": "magdalena",
+    "ciudad": "santa marta",
+    "nombre_lugar": "bahia"
+}
+
+
+###
+PUT http://localhost:9003/api/resources/lugar/update/6 HTTP/1.1
+Content-Type: application/json
+
+{
+    "pais":"colomabia",
+    "departamento": "magdalena",
+    "ciudad": "santa marta",
+    "nombre_lugar": "rodadero"
+}
+
+
+###
+DELETE http://localhost:9003/api/resources/lugar/delete/3 HTTP/1.1
+
+//Listar por especie 
+###
+GET   http://localhost:9003/api/resources/consulta http/1.1
+Content-Type: application/json
+
+{
+    "especie": "musculus"
+}

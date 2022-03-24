@@ -3,6 +3,20 @@ const routes = express.Router();
 
 
 
+//consulta de avisamiento por especie 
+routes.get('/consulta', (req, res)=>{
+    req.getConnection((err, conn)=>{
+        if (err) return res.send(err);
+
+        conn.query('select  * from tabla_especie_marina inner join categoria_toxinica on categoria_toxinica.id_categoria_toxinica = tabla_especie_marina.id_categoria_toxinica inner join tabla_avistamiento ta on ta.id_tabla_avistamiento = tabla_especie_marina.id_tabla_avistamiento inner join tabla_lugares tl on tl.id_tabla_lugares = tabla_especie_marina.id_tabla_lugares where categoria_toxinica.especie =?', [req.body.especie], (err, rows)=>{
+            if(err) return res.send(err);
+
+            res.json(rows);
+        })
+    })
+});
+
+
 //listar tabla lugares avistamientos
 routes.get('/lugares', (req, res)=>{
     req.getConnection((err, conn)=>{
